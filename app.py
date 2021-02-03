@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -8,40 +8,33 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-class Games(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30))
+class Register(db.Model):
+    name = db.Column(db.String(30), nullable=False, primary_key=True)
 
 db.create_all()
 
-@app.route('/add')
-def add():
-    new_game = Games(name="New Game")
-    db.session.add(new_game)
+@app.route('/', methods=["GET","POST"])
+def home():
+    if request.form:
+        person = Register(name=request.form.get("name"))
+        db.session.add(person)
+        db.session.commit()
+    registrees = Register.query.all()
+    return render_template("home.html", registrees=registrees)
+
+@app.route("/update", methods=["POST"])
+def update():
+    person = Register.query.filter_by(name=request.form.get("oldname")).first()
+    person.name = request.form.get("newname")
     db.session.commit()
-    return "Added new game to database"
+    return redirect("/")
 
-@app.route('/read')
-def read():
-    all_games = Games.query.all()
-    games_string = ""
-    for game in all_games:
-        games_string += "<br>"+ game.name
-    return games_string
-
-@app.route('/update/<name>')
-def update(name):
-    first_game = Games.query.first()
-    first_game.name = name
-    db.session.commit()
-    return first_game.name
-
-@app.route('/delete')
+@app.route("/delete", methods=["POST"])
 def delete():
-    game_to_delete = Games.query.first()
-    db.session.delete(game_to_delete)
+    person = Register.query.filter_by(name=request.form.get("name")).first()
+    db.session.delete(person)
     db.session.commit()
-    return "One Game deleted from database"
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True)
