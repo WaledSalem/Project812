@@ -5,7 +5,8 @@ import pytest_cov
 from flask import url_for
 from flask_testing import TestCase
 
-from app import app, db, Register
+from application import app, db
+from application.models import Register
 
 class TestBase(TestCase):
     def create_app(self):
