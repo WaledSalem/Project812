@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-import unittest
+import pytest
+import pytest_cov
+
 from flask import url_for
 from flask_testing import TestCase
 

@@ -9,3 +9,5 @@ pytest-cov
 Wheel
 Flask-Testing
 gunicorn
+flask_wtf
+wtforms
