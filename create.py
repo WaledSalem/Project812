@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from application import db
-from application.models import Questions
+from application.models import Questions, Employees
 
 db.session.remove()
 db.drop_all()
@@ -22,4 +22,9 @@ question12 = Questions(question='When I am working on something, I am doing it f
 question13 = Questions(question='I get my motivation from the work itself, and not from the reward for it.')
 db.session.add_all([question1, question2, question3, question4, question5, question6, question7, question8, question9,
                    question10, question11, question12, question13])
+db.session.commit()
+
+employee1 = Employees(name='Waled Salem', question_id=1, answer='Yes')
+employee2 = Employees(name='Heidi Soliman', question_id=1, answer='Yes')
+db.session.add_all([employee1, employee2])
 db.session.commit()
