@@ -1,29 +1,34 @@
 #!/usr/bin/python3
 
-from flask import redirect, render_template, request
 from application import app, db
 
-from application.models import Questions, Employees
+from application.models import Employees, Questions
 
-@app.route('/', methods=["GET","POST"])
-def home():
-    if request.form:
-        person = Register(name=request.form.get("name"))
-        db.session.add(person)
-        db.session.commit()
-    registrees = Register.query.all()
-    return render_template("home.html", registrees=registrees)
-
-@app.route("/update", methods=["POST"])
-def update():
-    person = Register.query.filter_by(name=request.form.get("oldname")).first()
-    person.name = request.form.get("newname")
+@app.route('/add')
+def add():
+    new_employee = Employees(name='Waled', question_id=1, answer='yes')
+    db.session.add(new_employee)
     db.session.commit()
-    return redirect("/")
+    return 'new employee added to database!'
 
-@app.route("/delete", methods=["POST"])
+@app.route('/read')
+def read():
+    all_employees = Employees.query.all()
+    employees_string = ""
+    for employee in all_employees:
+        employees_string += "<br>" + employee.name
+    return employees_string
+
+@app.route('/update/<name>')
+def update(name):
+    first_employee = Employees.query.first()
+    first_employee.name = name
+    db.session.commit()
+    return first_employee.name
+
+@app.route('/delete')
 def delete():
-    person = Register.query.filter_by(name=request.form.get("name")).first()
-    db.session.delete(person)
+    employee_to_delete = Employees.query.first()
+    db.session.delete(employee_to_delete)
     db.session.commit()
-    return redirect("/")
+    return "One Name deleted from database"
