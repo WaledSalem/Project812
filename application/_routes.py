@@ -3,7 +3,7 @@
 from flask import redirect, render_template, request
 from application import app, db
 
-from application.models import Questions, Employees
+from application.models import Questions, Answers
 
 @app.route('/', methods=["GET","POST"])
 def home():

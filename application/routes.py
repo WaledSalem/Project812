@@ -2,7 +2,7 @@
 
 from application import app, db
 
-from application.models import Employees, Questions
+from application.models import Questions, Employees, Answers
 
 @app.route('/add')
 def add():
