@@ -1,34 +1,19 @@
-<html>
-  <head>
-    <title>Add person</title>
-  </head>
-  <body>
-    <h1>Add Person</h1>
-    <form method="POST" action="/">
-      <input type="text" name="name"> <input type="submit" value="Add">
-    </form>
-    <h2>Register</h2>
-    <table>
-      {% for person in registrees %}
-        <tr>
-          <td>
-            {{person.name}}
-          </td>
-          <td>
-            <form method="POST" action="./update">
-              <input type="hidden" value="{{person.name}}" name="oldname">
-              <input type="text" value="{{person.name}}" name="newname">
-              <input type="submit" value="Update">
-            </form>
-          </td>
-          <td>
-            <form method="POST" action="./delete">
-              <input type="hidden" value="{{person.name}}" name="name">
-              <input type="submit" value="Delete">
-            </form>
-          </td>
-        </tr>
-        {% endfor %}
-    </table>
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<h1>WOLF</h1>
+<div>
+    <div>
+        <div>
+
+            <h2> Manage <b> WOLF Database <b/> <button><a href="wolfdatabase">Click Here</a></button> </h2>
+            <h2> Respond <b/> <button><a href="add">Click Here</a></button> </h2>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

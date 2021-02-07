@@ -1,0 +1,26 @@
+<h1>add</h1>
+
+{% extends "base.html" %}
+
+{% block title %} WOLF {% endblock %}
+
+{% block body %}
+<h1>Respond to WOLF</h1>
+<div>
+    <h2> Respond </h2>
+        <form  method = "POST" action="">
+            {{ form.hidden_tag() }}
+            <div class ="form-group">
+                {{ form.name.label }}
+                {{ form.name (size=30)}}
+            </div>
+            <div class ="form-group">
+                {{ form.answer.label }}
+                {{ form.answer (size=20)}}
+            </div>
+            <div class ="form-group">
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

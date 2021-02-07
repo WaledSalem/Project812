@@ -7,13 +7,6 @@ db.session.remove()
 db.drop_all()
 db.create_all()
 
-new_answer = Answers(answer='yes')
-db.session.add(new_answer)
-
-new_employee = Employees(employee='Waled')
-db.session.add(new_employee)
-
-
 question1 = Questions(question='When I am working, I think about nothing else.')
 question2 = Questions(question='I get carried away by my work.')
 question3 = Questions(question='When I am working, I forget everything else around me.')
