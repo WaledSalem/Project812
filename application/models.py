@@ -18,7 +18,7 @@ class Employees(db.Model):
 class Answers(db.Model):
     id = db.Column(db.Integer,
                    primary_key=True)
-    answer = db.Column(db.String(30))
+    answer = db.Column(db.Integer)
     question_id = db.Column('questions_id',
                             db.Integer,
                             db.ForeignKey('questions.id'))
