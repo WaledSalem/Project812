@@ -23,5 +23,5 @@ class Answers(db.Model):
                             db.Integer,
                             db.ForeignKey('questions.id'))
     employee_id = db.Column('employees_name',
-                            db.Integer,
+                            db.String(30),
                             db.ForeignKey('employees.name'))

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from application import db
-from application.models import Questions, Answers, Employees
+from application.models import Questions, Employees, Answers
 
 db.session.remove()
 db.drop_all()
