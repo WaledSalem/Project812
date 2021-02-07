@@ -18,12 +18,10 @@ class Employees(db.Model):
 class Answers(db.Model):
     id = db.Column(db.Integer,
                    primary_key=True)
-    answer = db.Column(db.Integer)
+    answer = db.Column(db.String(7))
     question_id = db.Column('questions_id',
                             db.Integer,
                             db.ForeignKey('questions.id'))
     employee_id = db.Column('employees_name',
                             db.Integer,
                             db.ForeignKey('employees.name'))
-
-

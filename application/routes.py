@@ -52,16 +52,15 @@ def add():
         return render_template('add.html', form=form, employee='')
 
 
-@app.route('/read')
+@app.route('/read', methods=['GET', 'POST'])
 def read():
-    all_employees = Employees.query.all()
-    employees_string = ""
-    for employee in all_employees:
-        employees_string += "<br>" + employee.name
-    return employees_string
+    heading = ('ID', 'Answer', 'Question ID', 'Employee ID')
+    all_answers = Answers.query.all()
+    answer = Answers.id
+    return render_template('read.html', heading=heading,
+                           all_answers=all_answers, answer=answer)
 
-
-@app.route('/update/<name>')
+@app.route('/update/<int:answer_id>', methods = ['GET', 'POST'])
 def update(name):
     first_employee = Employees.query.first()
     first_employee.name = name

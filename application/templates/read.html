@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} WOLF {% endblock %}
+
+{% block body %}
+<h1>WOLF</h1>
+<div>
+    <h2> Return Home <b/> <button><a href="home">Home</a></button> </h2>
+    <div>
+        <div>
+            <table>
+            <tr>
+                {% for header in heading %}
+                <th>{{header}}</th>
+                {% endfor %}
+            </tr>
+            {% for answer in all_answers%}
+            <tr>
+            <td>{{answer.id}}</td> <td>{{answer.answer}}</td> <td>{{answer.question_id}}</td> <td>{{answer.employee_id}}</td> <td><button><a href="/update/{{ answer.id }}">Update Answer</a></button></td><td><button><a href="/delete/{{ answer.id }}">Delete</a></button></td>
+             </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
