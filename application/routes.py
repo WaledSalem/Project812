@@ -35,12 +35,10 @@ def add():
                             new_answer8, new_answer9, new_answer10,
                             new_answer11, new_answer12, new_answer13])
         db.session.commit()
-        return render_template('home.html',
-                               form=form,
+        return render_template('home.html',form=form,
                                employee=new_employee)
     else:
-        return render_template('add.html', form=form,
-                               employee='')
+        return render_template('add.html', form=form, employee='')
 
 
 @app.route('/read')
