@@ -3,7 +3,7 @@
 from application import app, db
 from application.models import Employees, Answers
 from flask import render_template, request, redirect, url_for
-from application.forms import BasicForm
+from application.forms import BasicForm, ModifyForm
 
 @app.route('/')
 @app.route('/home')
@@ -46,7 +46,7 @@ def add():
                             new_answer8, new_answer8, new_answer9, new_answer10,
                             new_answer11, new_answer12, new_answer13])
         db.session.commit()
-        return render_template('home.html',form=form,
+        return render_template('home.html', form=form,
                                employee=new_employee)
     else:
         return render_template('add.html', form=form, employee='')
@@ -61,15 +61,20 @@ def read():
                            all_answers=all_answers, answer=answer)
 
 @app.route('/update/<int:answer_id>', methods = ['GET', 'POST'])
-def update(name):
-    first_employee = Employees.query.first()
-    first_employee.name = name
-    db.session.commit()
-    return first_employee.name
+def update(answer_id):
+    form = ModifyForm()
+    if form.validate_on_submit():
+        #answer_to_update = db.session.query(Answers).filter_by(id=answer_id).first()
+        answer_to_update = Answers.query.filter_by(id=answer_id).first()
+        answer_to_update.answer = form.answer.data
+        db.session.commit()
+        return redirect('/read')
+    else:
+        return render_template('update.html', form=form)
 
-@app.route('/delete')
-def delete():
-    employee_to_delete = Employees.query.first()
-    db.session.delete(employee_to_delete)
+@app.route('/delete/<int:answer_id>', methods = ['GET', 'POST'])
+def delete(answer_id):
+    answer_to_delete = Answers.query.filter_by(id=answer_id).first()
+    db.session.delete(answer_to_delete)
     db.session.commit()
-    return "One Name deleted from database"
+    return redirect('/read')

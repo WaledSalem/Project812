@@ -3,7 +3,6 @@ from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 
 class BasicForm(FlaskForm):
-
     name = StringField('Name',
                        validators=[DataRequired()])
     answer1 = SelectField('When I am working, I think about nothing else.',
@@ -32,4 +31,8 @@ class BasicForm(FlaskForm):
                            choices=[1, 2, 3, 4, 5])
     answer13 = SelectField('I get my motivation from the work itself, and not from the reward for it.',
                            choices=[1, 2, 3, 4, 5])
+    submit = SubmitField('Submit')
+
+class ModifyForm(FlaskForm):
+    answer = SelectField('Update', choices=[1, 2, 3, 4, 5])
     submit = SubmitField('Submit')
