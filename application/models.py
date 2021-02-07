@@ -11,9 +11,7 @@ class Questions(db.Model):
                               backref='question')
 
 class Employees(db.Model):
-    id = db.Column(db.Integer,
-                   primary_key=True)
-    employee = db.Column(db.String(30))
+    name = db.Column(db.String(30), primary_key=True)
     answers = db.relationship('Answers',
                               backref='employee')
 
@@ -24,8 +22,8 @@ class Answers(db.Model):
     question_id = db.Column('questions_id',
                             db.Integer,
                             db.ForeignKey('questions.id'))
-    employee_id = db.Column('employees_id',
+    employee_id = db.Column('employees_name',
                             db.Integer,
-                            db.ForeignKey('employees.id'))
+                            db.ForeignKey('employees.name'))
 
 

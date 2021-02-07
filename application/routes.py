@@ -14,25 +14,36 @@ def home():
 def add():
     form = BasicForm()
     if form.validate_on_submit():
-        new_employee = Employees(employee=form.name.data)
-        new_employee_id = Answers(employee_id=Employees.id)
-        new_answer1 = Answers(answer=form.answer1.data, question_id=1)
-        new_answer2 = Answers(answer=form.answer2.data, question_id=2)
-        new_answer3 = Answers(answer=form.answer3.data, question_id=3)
-        new_answer4 = Answers(answer=form.answer4.data, question_id=4)
-        new_answer5 = Answers(answer=form.answer5.data, question_id=5)
-        new_answer6 = Answers(answer=form.answer6.data, question_id=6)
-        new_answer7 = Answers(answer=form.answer7.data, question_id=7)
-        new_answer8 = Answers(answer=form.answer8.data, question_id=8)
-        new_answer9 = Answers(answer=form.answer9.data, question_id=9)
-        new_answer10 = Answers(answer=form.answer10.data, question_id=10)
-        new_answer11 = Answers(answer=form.answer11.data, question_id=11)
-        new_answer12 = Answers(answer=form.answer12.data, question_id=12)
-        new_answer13 = Answers(answer=form.answer13.data, question_id=13)
-        db.session.add_all([new_employee, new_employee_id,
-                            new_answer1, new_answer2, new_answer3, new_answer4,
-                            new_answer5, new_answer6, new_answer7, new_answer8,
-                            new_answer8, new_answer9, new_answer10,
+        new_employee = Employees(name=form.name.data)
+        new_answer1 = Answers(answer=form.answer1.data, question_id=1,
+                              employee_id=form.name.data)
+        new_answer2 = Answers(answer=form.answer2.data, question_id=2,
+                              employee_id=form.name.data)
+        new_answer3 = Answers(answer=form.answer3.data, question_id=3,
+                              employee_id=form.name.data)
+        new_answer4 = Answers(answer=form.answer4.data, question_id=4,
+                              employee_id=form.name.data)
+        new_answer5 = Answers(answer=form.answer5.data, question_id=5,
+                              employee_id=form.name.data)
+        new_answer6 = Answers(answer=form.answer6.data, question_id=6,
+                              employee_id=form.name.data)
+        new_answer7 = Answers(answer=form.answer7.data, question_id=7,
+                              employee_id=form.name.data)
+        new_answer8 = Answers(answer=form.answer8.data, question_id=8,
+                              employee_id=form.name.data)
+        new_answer9 = Answers(answer=form.answer9.data, question_id=9,
+                              employee_id=form.name.data)
+        new_answer10 = Answers(answer=form.answer10.data, question_id=10,
+                               employee_id=form.name.data)
+        new_answer11 = Answers(answer=form.answer11.data, question_id=11,
+                               employee_id=form.name.data)
+        new_answer12 = Answers(answer=form.answer12.data, question_id=12,
+                               employee_id=form.name.data)
+        new_answer13 = Answers(answer=form.answer13.data, question_id=13,
+                               employee_id=form.name.data)
+        db.session.add_all([new_employee, new_answer1, new_answer2, new_answer3,
+                            new_answer4, new_answer5, new_answer6, new_answer7,
+                            new_answer8, new_answer8, new_answer9, new_answer10,
                             new_answer11, new_answer12, new_answer13])
         db.session.commit()
         return render_template('home.html',form=form,
