@@ -2,6 +2,7 @@
 
 from application import db
 
+
 class Questions(db.Model):
     id = db.Column(db.Integer,
                    primary_key=True)
@@ -10,10 +11,12 @@ class Questions(db.Model):
     answers = db.relationship('Answers',
                               backref='question')
 
+
 class Employees(db.Model):
     name = db.Column(db.String(30), primary_key=True)
     answers = db.relationship('Answers',
                               backref='employee')
+
 
 class Answers(db.Model):
     id = db.Column(db.Integer,

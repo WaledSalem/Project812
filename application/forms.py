@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 
+
 class BasicForm(FlaskForm):
     name = StringField('Name',
                        validators=[DataRequired()])
@@ -33,6 +34,7 @@ class BasicForm(FlaskForm):
     answer13 = SelectField('I get my motivation from the work itself, and not from the reward for it.',
                            choices=[1, 2, 3, 4, 5])
     submit = SubmitField('Submit')
+
 
 class ModifyForm(FlaskForm):
     answer = SelectField('Update', choices=[1, 2, 3, 4, 5])

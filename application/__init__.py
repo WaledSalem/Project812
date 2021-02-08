@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -13,4 +12,3 @@ app.config['WTF_CSRF_ENABLED'] = False
 db = SQLAlchemy(app)
 
 from application import routes
-

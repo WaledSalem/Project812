@@ -2,15 +2,17 @@
 
 from application import app, db
 from application.models import Employees, Answers
-from flask import render_template, request, redirect, url_for
+from flask import render_template, redirect
 from application.forms import BasicForm, ModifyForm
+
 
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template("home.html")
 
-@app.route('/add', methods = ['GET', 'POST'])
+
+@app.route('/add', methods=['GET', 'POST'])
 def add():
     form = BasicForm()
     if form.validate_on_submit():
@@ -60,7 +62,8 @@ def read():
     return render_template('read.html', heading=heading,
                            all_answers=all_answers, answer=answer)
 
-@app.route('/update/<int:answer_id>', methods = ['GET', 'POST'])
+
+@app.route('/update/<int:answer_id>', methods=['GET', 'POST'])
 def update(answer_id):
     form = ModifyForm()
     if form.validate_on_submit():
@@ -71,7 +74,8 @@ def update(answer_id):
     else:
         return render_template('update.html', form=form)
 
-@app.route('/delete/<int:answer_id>', methods = ['GET', 'POST'])
+
+@app.route('/delete/<int:answer_id>', methods=['GET', 'POST'])
 def delete(answer_id):
     answer_to_delete = Answers.query.filter_by(id=answer_id).first()
     db.session.delete(answer_to_delete)
