@@ -64,7 +64,6 @@ def read():
 def update(answer_id):
     form = ModifyForm()
     if form.validate_on_submit():
-        answer_to_update = db.session.query(Answers).filter_by(id=answer_id).first()
         answer_to_update = Answers.query.filter_by(id=answer_id).first()
         answer_to_update.answer = form.answer.data
         db.session.commit()
