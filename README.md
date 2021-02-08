@@ -60,7 +60,3 @@ Waled Salem
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-* [Arnold B. Bakker; Professor of Organizational Psychology, Erasmus University](http://www.arnoldbakker.com/flow.php)
