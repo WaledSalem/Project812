@@ -36,7 +36,7 @@ performance.
 * Deploy
 
 ```
-git clone https://github.com/WaledSalem/Project812.git
+git clone https://github.com/WaledSalem/ProjectWOLF.git
 cd Project812
 python3 -m venv venv
 . venv/bin/activate
