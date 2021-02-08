@@ -8,8 +8,8 @@ Investment in information technologies and systems provides
 real economic value to the firm. This application utilises  
 a well-establish scale called: The WOrk-reLated Flow inventory (WOLF),  
 where flow is defined as “a short-term peak experience at work”  
-characterised by:  
-absorption, work enjoyment,  and intrinsic work motivation.
+characterised by: absorption, work enjoyment, and intrinsic work motivation. 
+
 By means of a self-administered questionnaire the response is collected  
 from the employees which can be entered through the application  
 directly by the respondent, or by the admin. The database can then be  
