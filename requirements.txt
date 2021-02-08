@@ -6,7 +6,6 @@ pymysql
 Werkzeug
 pytest
 pytest-cov
-Wheel
 Flask-Testing
 gunicorn
 flask_wtf

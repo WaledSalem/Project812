@@ -55,8 +55,4 @@ class TestAdd(TestBase):
         response = self.client.get(url_for('add'))
         self.assertEqual(response.status_code, 200)
 
-class TestDelete(TestBase):
-    def test_delete_get(self):
-        response = self.client.get(('/delete'),
-                data = dict(id=1), follow_redirects=True)
-        self.assertEqual(response.status_code, 404)
+
